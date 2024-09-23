@@ -47,6 +47,7 @@ public class Solution01 {
                     right = maxSumArray[2];
                     top = initialRow;
                     bottom = finalRow;
+
                 }
             }
         }
