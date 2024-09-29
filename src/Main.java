@@ -9,10 +9,11 @@ public class Main {
         MatrixServices.printMatrix(sourceMatrix);
 
         System.out.printf("\nMax sum rectangule: Sum = %d\n", result[0]);
-        System.out.printf("Reactangle cordinates:[Top=%d, Left=%d, Bottom=%d, Right=%d]",
+        /*System.out.printf("Reactangle cordinates:[Top=%d, Left=%d, Bottom=%d, Right=%d]",
                 result[3], result[1], result[4], result[2]);
+        */
     }
-    public static int[] ROISolution(int[][] sourceMatrix) {
+        public static int[] ROISolution(int[][] sourceMatrix) {
         int rows = sourceMatrix.length;
         int columns = sourceMatrix[0].length;
         int maxSum = Integer.MIN_VALUE;
