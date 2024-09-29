@@ -48,3 +48,29 @@ O programa imprime a matriz original, a soma máxima da submatriz encontrada e a
    ```
 
 3. **Insira a matriz quando solicitado** ou modifique a classe `MatrixServices` para definir a matriz diretamente no código.
+
+---
+
+## Exemplo de Execução
+
+Execute os seguintes comandos no terminal:
+
+```bash
+PS C:\Users\giova\IdeaProjects\AnaliseDeAlgoritmo\src> javac Main.java
+PS C:\Users\giova\IdeaProjects\AnaliseDeAlgoritmo\src> java Main
+Inform matrix's length: 4
+Inform matrix's numbers:
+0 -2 -7 0
+9 2 -6 2
+-4 1 -4 1
+-1 8 0 -2
+
+Source matrix:
+0 -2 -7 0
+9 2 -6 2
+-4 1 -4 1
+-1 8 0 -2
+
+Max sum rectangle: Sum = 15
+PS C:\Users\giova\IdeaProjects\AnaliseDeAlgoritmo\src>
+```
