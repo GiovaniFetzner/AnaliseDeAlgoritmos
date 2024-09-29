@@ -1,82 +1,73 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
-
 public class Main {
 
-    /*
-            Algoritmo se baseia em encontrar o maior valor dentro da matriz
-        e a partir dele começar a avaliar os vizinhos se vale a pena ou não expandir o retângulo.
-     */
     public static void main(String[] args) {
 
-        int[][] matrix = MatrixServices.readInputMatrix();
+        int[][] sourceMatrix = MatrixServices.readInputMatrix();
 
-        int maxElement = findMaxElement(matrix);
-        int[] maxElementPosition = findPosition(matrix);
+        int[] result = ROISolution(sourceMatrix);
 
-        System.out.println("\nMax value from matrix: " + maxElement);
-        System.out.println("Position: " + Arrays.toString(maxElementPosition));
+        MatrixServices.printMatrix(sourceMatrix);
 
-        System.out.println("Max sum rectangle: " + ROISolution(matrix, maxElement, maxElementPosition));
-
-        MatrixServices.printMatrix(matrix);
+        System.out.printf("\nMax sum rectangule: Sum = %d\n", result[0]);
+        System.out.printf("Reactangle cordinates:[Top=%d, Left=%d, Bottom=%d, Right=%d]",
+                result[3], result[1], result[4], result[2]);
     }
-
-    private static int ROISolution(int[][] source, int maxElement, int[] maxElementPosition){
-
-        /*
-        1) Encontrar o maior valor;
-        2) Conseguir a posição desse elemento;
-        3) Tenta expandir > Norte < Sul em uma posição
-            Valor antigo (antes da expansão deve ser usado como referência), se o valor da expansão aumentou em relação
-            ao valor referência, a expansão ocorre até esse aumento
-                OBS.: Está complicando no momento da expansão, é mais trabalhoso e não consegue expandir corretamente
-        seria mas fácil se fosse em formato de cruz a partir do maior elemento do vetor
-                OBS1.: Se houver o maior valor na matriz 2D duplicado, ele vai encontrar somente um deles, que seria
-        o último a ser lido, resultando em problemas na análise.
-
-         */
-
-        int rows = source.length;
-        int columns = source[0].length;
+    public static int[] ROISolution(int[][] sourceMatrix) {
+        int rows = sourceMatrix.length;
+        int columns = sourceMatrix[0].length;
         int maxSum = Integer.MIN_VALUE;
-        int[] result = new int[5];
+        int[] result = new int[5]; // [maxSum, left, right, top, bottom]
 
-        // Inicializa as bordas do retângulo
         int left = 0, right = 0, top = 0, bottom = 0;
 
+        for (int initialRow = 0; initialRow < rows; initialRow++) {
+            int[] temp = new int[columns];
 
+            for (int finalRow = initialRow; finalRow < rows; finalRow++) {
 
-        return 0;
-    }
+                for (int col = 0; col < columns; col++) {
+                    temp[col] += sourceMatrix[finalRow][col];
+                }
+                int[] maxSumArray = maxSumArray(temp);
+                if (maxSumArray[0] > maxSum) {
+                    maxSum = maxSumArray[0];
+                    left = maxSumArray[1];
+                    right = maxSumArray[2];
+                    top = initialRow;
+                    bottom = finalRow;
 
-    private static int[] findPosition(int[][] sourceMatrix){
-        int maxValue = findMaxElement(sourceMatrix);
-
-        for (int i = 0; i < sourceMatrix.length; i++){
-            for (int j = 0; j < sourceMatrix.length; j++) {
-                if (sourceMatrix[i][j] == maxValue){
-                    return new int[]{i,j};
                 }
             }
         }
-        return null;
+        result[0] = maxSum;
+        result[1] = left;
+        result[2] = right;
+        result[3] = top;
+        result[4] = bottom;
+
+        return result;
     }
 
-    private static int findMaxElement(int[][] sourceMatrix){
-        //Possível melhoria: ao encontrar o elemento, colocar ele no HashMap contendo o valor e a posição
-        // HashMap<Integer, ArrayList<Integer>> element
+    public static int[] maxSumArray(int[] array) {
+        int maxSum = Integer.MIN_VALUE;
+        int currentSum = 0, initialElement = 0, finalElement = 0, temporaryInitial = 0;
 
-        int maxValue = Integer.MIN_VALUE;
-        for (int i = 0; i < sourceMatrix.length; i++){
-            for (int j = 0; j < sourceMatrix.length; j++) {
-                if (sourceMatrix[i][j] > maxValue){
-                    maxValue = sourceMatrix[i][j];
-                }
+        for (int i = 0; i < array.length; i++) {
+            currentSum += array[i];
+
+            if (currentSum > maxSum) {
+                maxSum = currentSum;
+                initialElement = temporaryInitial;
+                finalElement = i;
+            }
+
+            if (currentSum < 0) {
+                currentSum = 0;
+                temporaryInitial = i + 1;
             }
         }
-        return maxValue;
+
+        return new int[]{maxSum, initialElement, finalElement};
     }
+
 }
