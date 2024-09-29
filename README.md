@@ -1,6 +1,7 @@
+
 # Visão Geral
 
-Este projeto em **Java** visa encontrar a submatriz (região de interesse) dentro de uma matriz quadrada. A solução utiliza uma abordagem de **programação dinâmica** combinada com o **Algoritmo de Kadane** para calcular de forma eficiente a soma máxima de todas as possíveis regiões retangulares da matriz.
+Este projeto em Java visa encontrar a submatriz (região de interesse) dentro de uma matriz quadrada. A solução utiliza uma abordagem de programação dinâmica combinada com o Algoritmo de Kadane para calcular de forma eficiente a soma máxima de todas as possíveis regiões retangulares da matriz.
 
 ---
 
@@ -31,3 +32,19 @@ O programa imprime a matriz original, a soma máxima da submatriz encontrada e a
 **OBS.:** Este projeto não tem dependências de frameworks ou pacotes externos, portanto, o código pode ser executado de forma limpa e independente.
 
 ---
+
+## Como Executar
+
+1. **Compile a classe Main**:
+
+   ```bash
+   javac Main.java
+   ```
+
+2. **Execute o programa**:
+
+   ```bash
+   java Main
+   ```
+
+3. **Insira a matriz quando solicitado** ou modifique a classe `MatrixServices` para definir a matriz diretamente no código.
