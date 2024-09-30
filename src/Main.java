@@ -6,7 +6,7 @@ public class Main {
 
         int[] result = ROISolution(sourceMatrix);
 
-        MatrixServices.printMatrix(sourceMatrix);
+        //MatrixServices.printMatrix(sourceMatrix);
 
         System.out.printf("\nMax sum rectangule: Sum = %d\n", result[0]);
         /*System.out.printf("Reactangle cordinates:[Top=%d, Left=%d, Bottom=%d, Right=%d]",
