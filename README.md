@@ -65,12 +65,6 @@ Inform matrix's numbers:
 -4 1 -4 1
 -1 8 0 -2
 
-Source matrix:
-0 -2 -7 0
-9 2 -6 2
--4 1 -4 1
--1 8 0 -2
-
-Max sum rectangle: Sum = 15
+15
 PS C:\Users\giova\IdeaProjects\AnaliseDeAlgoritmo\src>
 ```
