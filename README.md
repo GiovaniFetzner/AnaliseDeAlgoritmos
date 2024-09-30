@@ -1,3 +1,5 @@
+#Integrantes
+Eduardo Godoi da Silveira, Giovani Fetzner e João Pedro Poitevin
 
 # Visão Geral
 
